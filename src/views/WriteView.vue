@@ -1,15 +1,40 @@
 <script setup lang="ts">
+import {ref} from "vue";
 
+import axios from "axios";
+import {useRouter} from "vue-router";
+
+const title = ref("")
+const content = ref("")
+
+const router = useRouter();
+
+const write = function() {
+    axios.post("/dddn/api/board", {
+        boardTitle: title.value,
+        boardContent: content.value,
+        boardCategory: 'board',
+        memberNum: 1,
+        showYn: 'Y'
+    })
+    .then(() => {
+        router.replace({name: "home"});
+    });
+}
 </script>
 
 <template>
-    <input type="text" placeholder="제목을 입력해주세요" />
     <div>
-    </div>  
-    <div>
-        <textarea rows="15"></textarea>
-    </div>   
-    <button>글 작성완료</button>
+        <el-input v-model="title" placeholder="제목을 입력해주세요" />
+    </div>
+
+    <div class="mt-2">
+        <el-input v-model="content" type="textarea" rows="15"/>
+    </div>
+
+    <div class="mt-2">
+        <el-button type="primary" @click="write()">글 작성완료</el-button>
+    </div>
 </template>
 
 <style>

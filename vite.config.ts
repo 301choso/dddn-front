@@ -12,4 +12,12 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  server: {
+    proxy: {
+      "/dddn/api": {
+        target: "http://localhost:8090",
+        rewrite: (path) => path.replace(/^\/dddn/, ""),
+      },
+    },
+  },
 });
