@@ -18,11 +18,13 @@ axios.get("/dddn/api/board").then((response) => {
   <ul>
     <li v-for="board in boards" :key="board.id">
       <div class="title">
-        <router-link :to="{name: 'read', params: {boardId: board.boardId} }">{{board.boardTitle}}</router-link>
+        <router-link :to="{name: 'read', params: {boardId: board.boardId} }">
+          <p v-html="board.boardTitle"></p>
+        </router-link>
       </div>
 
       <div class="content">
-        {{board.boardContent}}
+        <p v-html="board.boardContent"></p>
       </div>
 
       <div class="sub d-flex">

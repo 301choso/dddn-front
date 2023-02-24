@@ -33,7 +33,9 @@ onMounted(() => {
 <template>
     <el-row>
         <el-col>
-            <h2 class="title">{{board.boardTitle}}</h2>
+            <h2 class="title">
+                <p v-html="board.boardTitle"></p>
+            </h2>
 
             <div class="sub d-flex">
                 <div class="category">{{board.boardCategory}}</div>
@@ -44,7 +46,9 @@ onMounted(() => {
     
     <el-row>
         <el-col>
-            <div class="content">{{board.boardContent}}</div>
+            <div class="content">
+                <p v-html="board.boardContent"></p>
+            </div>
         </el-col>
     </el-row>
 
@@ -71,6 +75,7 @@ onMounted(() => {
       color: #7e7e7e;
       white-space: break-spaces;
       line-height: 1.5;
+      
     }
 
     .sub {

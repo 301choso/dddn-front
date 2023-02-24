@@ -7,7 +7,6 @@ import Content from "@/components/Content.vue";
 <template>
   <Header />
   <Content />
-  <RouterView />
 </template>
 
 <style>

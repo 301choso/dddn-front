@@ -1,5 +1,9 @@
 <script lang="ts" setup>
+import axios from 'axios';
 import { ref } from 'vue'
+import {useRouter} from "vue-router";
+
+const router = useRouter();
 
 const form = ref({
     memberNum: 0,
@@ -8,7 +12,9 @@ const form = ref({
 });
 
 const onSubmit = () => {
-  console.log('submit!')
+  axios.post("/dddn/api/auth/login", form.value).then(() => {       
+    router.replace({name: "home"});
+  });
 }
 </script>
 
